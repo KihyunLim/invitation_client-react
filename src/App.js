@@ -1,44 +1,79 @@
-import React from "react";
-import Loading from "./components/Loading";
-import axios from "axios";
+import React from 'react';
+import Loading from './components/Loading';
+import LoadingFail from './components/LoadingFail';
+import Navbar from './components/Nabvar';
+import Home from './components/Home';
+import './App.css';
+import axios from 'axios';
+import * as Def from './common/def.js';
 
 class App extends React.Component {
   state = {
     isLoading: true,
+    isLoadingSuccess: false,
     invitation: undefined,
   };
 
   getInvitationData = async () => {
-    let data = undefined;
-
     await axios
       .get(
-        "http://localhost:8980/admin/invitation/receiveInvitation.do?invSeq=6"
+        'http://localhost:8080/admin/invitation/receiveInvitation.do?invSeq=1'
       )
       .then((res) => {
+        this.setState(() => {
+          return { isLoading: false };
+        });
+
         if (res.data.resFlag) {
-          data = res.data;
+          console.log('success load data');
+
+          this.setState(() => {
+            return { isLoadingSuccess: true, invitation: res.data };
+          });
         } else {
-          // 에러 컴포넌트로 대체 해야하나??
+          throw new Error('resFlag false');
         }
       })
       .catch((res) => {
-        // 에러 컴포넌트로 대체 해야하나??
-        console.log("fail");
-        console.log(res);
+        console.log(res.message);
+
+        this.setState(() => {
+          return {
+            isLoading: false,
+            isLoadingSuccess: true,
+            invitation: Def.replacementData,
+          };
+          // return { isLoading: false, invitation: Def.replacementData };
+        });
       });
 
-    console.log(data);
+    console.log(this.state.invitation);
   };
 
   componentDidMount() {
+    // setTimeout(() => {
+    //   this.setState(() => {
+    //     return { isLoading: false, isLoadingSuccess: true };
+    //   });
+    // }, 3000);
     this.getInvitationData();
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, isLoadingSuccess } = this.state;
 
-    return isLoading ? <Loading /> : <div>isLoading is false</div>;
+    return isLoading ? (
+      <Loading />
+    ) : isLoadingSuccess ? (
+      <>
+        <Navbar />
+        <Home
+          invitation={this.state.invitation.resSyntheticInvitation.mainInfoVO}
+        />
+      </>
+    ) : (
+      <LoadingFail />
+    );
   }
 }
 
