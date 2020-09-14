@@ -3,6 +3,8 @@ import Loading from './components/Loading';
 import LoadingFail from './components/LoadingFail';
 import Navbar from './components/Nabvar';
 import Home from './components/Home';
+import Main from './components/Main';
+import BrideGroom from './components/BrideGroom';
 import './App.css';
 import axios from 'axios';
 import * as Def from './common/def.js';
@@ -69,6 +71,12 @@ class App extends React.Component {
         <Navbar />
         <Home
           invitation={this.state.invitation.resSyntheticInvitation.mainInfoVO}
+        />
+        <Main
+          mainInfo={this.state.invitation.resSyntheticInvitation.mainInfoVO}
+        />
+        <BrideGroom
+          mainInfo={this.state.invitation.resSyntheticInvitation.mainInfoVO}
         />
       </>
     ) : (

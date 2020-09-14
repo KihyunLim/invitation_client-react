@@ -227,7 +227,6 @@ section {
   height: 900px;
   max-height: 100%;
   flex-basis: 45%;
-  background-image: url(imgs/about.jpg);
   background-position: center;
   background-size: cover;
   margin: 0 8px;
