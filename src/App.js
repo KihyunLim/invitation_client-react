@@ -5,6 +5,7 @@ import Navbar from './components/Nabvar';
 import Home from './components/Home';
 import Main from './components/Main';
 import BrideGroom from './components/BrideGroom';
+import LoveStory from './components/LoveStory';
 import './App.css';
 import axios from 'axios';
 import * as Def from './common/def.js';
@@ -77,6 +78,9 @@ class App extends React.Component {
         />
         <BrideGroom
           mainInfo={this.state.invitation.resSyntheticInvitation.mainInfoVO}
+        />
+        <LoveStory
+          loveStory={this.state.invitation.resSyntheticInvitation.loveStoryVO}
         />
       </>
     ) : (

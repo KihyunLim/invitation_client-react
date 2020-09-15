@@ -60,7 +60,6 @@ function BrideGroom({
 }
 
 function replaceContent(text) {
-  console.log(text.replace(/\r\n/g, '<br/>'));
   return { __html: text };
 }
 

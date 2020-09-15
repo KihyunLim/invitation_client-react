@@ -29,8 +29,8 @@ export const replacementData = {
       address: '경상북도 예천군 예천읍 효자로 115-2, 1234',
       nameGroom: '김신랑',
       nameBride: '이신부',
-      contentGroom: 'asdgaeg\naeg\nq',
-      contentBride: 'qawfa\naweg\naweg',
+      contentGroom: 'asdgaeg<br />aeg<br />q',
+      contentBride: 'qawfa<br />aweg<br />aweg',
       seqImgMain: 51,
       fullNameMain:
         '/2020/09/07/s_038bfd67-8db5-4db9-af82-cd4a637978d8_test1.jpg',
