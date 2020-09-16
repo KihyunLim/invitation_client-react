@@ -21,13 +21,7 @@ function ItemStory({
     <li className="story__item">
       <div
         className="item__image"
-        src={fullNameImg}
-        onError={(e) => {
-          console.log(e);
-          e.target.src = 'common/imgs/couple-' + (orderSeq % 4) + '.jpg';
-          //   getReplaceImage(e, orderSeq);
-        }}
-        alt={`love story image seq${orderSeq}`}
+        style={setBackground(fullNameImg, orderSeq)}
       ></div>
       <div className="item__info">
         <p className="info__date">{getFormatDate(dateStory)}</p>
@@ -41,13 +35,14 @@ function ItemStory({
   );
 }
 
-function getFormatDate(date) {
-  return `${date.substr(0, 4)}.${date.substr(4, 2)}.${date.substr(6, 2)}`;
+function setBackground(url, seq) {
+  return {
+    backgroundImage: `url(${url}), url(common/imgs/couple-${seq % 4}.jpg)`,
+  };
 }
 
-function getReplaceImage(e, orderSeq) {
-  console.loge(e);
-  e.target.src = `'common/imgs/couple-${orderSeq % 4}.jpg'`;
+function getFormatDate(date) {
+  return `${date.substr(0, 4)}.${date.substr(4, 2)}.${date.substr(6, 2)}`;
 }
 
 function replaceConent(text) {

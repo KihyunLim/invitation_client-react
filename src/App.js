@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Main from './components/Main';
 import BrideGroom from './components/BrideGroom';
 import LoveStory from './components/LoveStory';
+import WhenWhere from './components/WhenWhere';
 import './App.css';
 import axios from 'axios';
 import * as Def from './common/def.js';
@@ -81,6 +82,9 @@ class App extends React.Component {
         />
         <LoveStory
           loveStory={this.state.invitation.resSyntheticInvitation.loveStoryVO}
+        />
+        <WhenWhere
+          whenWhere={this.state.invitation.resSyntheticInvitation.whenWhereVO}
         />
       </>
     ) : (
