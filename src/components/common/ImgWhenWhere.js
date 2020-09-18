@@ -2,7 +2,7 @@ import React from 'react';
 import * as Secret from '../../common/secret.js';
 import axios from 'axios';
 
-class Img extends React.Component {
+class ImgWhenWhere extends React.Component {
   state = {
     placeX: this.props.placeX,
     placeY: this.props.placeY,
@@ -52,4 +52,4 @@ class Img extends React.Component {
   }
 }
 
-export default Img;
+export default ImgWhenWhere;

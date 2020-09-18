@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from './common/Img';
+import ImgWhenWhere from './common/ImgWhenWhere';
 
 function WhenWhere({ whenWhere }) {
   return (
@@ -30,8 +30,10 @@ function ItemWhenWhere({ seq, whenWhere }) {
         <p className="item__date">{getFormatDate(dateWedding)}</p>
         <p className="item__time">{getFromatTime(timeWedding)}</p>
         <p className="item__place">{address}</p>
-        <Img placeX={placeX} placeY={placeY} />
-        <button className="item__move_web">지도 보기</button>
+        <ImgWhenWhere placeX={placeX} placeY={placeY} />
+        <button className="item__move_web" onClick={() => callMap(address)}>
+          지도 보기
+        </button>
       </div>
     </div>
   );
@@ -71,6 +73,11 @@ function getFromatTime(time) {
   }
 
   return `${flagAmPm} ${hour} : ${time.substr(2, 2)}`;
+}
+
+function callMap(address) {
+  console.log(address);
+  window.open('http://map.naver.com/?query=' + address);
 }
 
 export default WhenWhere;

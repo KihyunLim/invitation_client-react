@@ -7,6 +7,7 @@ import Main from './components/Main';
 import BrideGroom from './components/BrideGroom';
 import LoveStory from './components/LoveStory';
 import WhenWhere from './components/WhenWhere';
+import Gallery from './components/Gallery';
 import './App.css';
 import axios from 'axios';
 import * as Def from './common/def.js';
@@ -85,6 +86,9 @@ class App extends React.Component {
         />
         <WhenWhere
           whenWhere={this.state.invitation.resSyntheticInvitation.whenWhereVO}
+        />
+        <Gallery
+          gallery={this.state.invitation.resSyntheticInvitation.galleryVO}
         />
       </>
     ) : (
