@@ -8,6 +8,7 @@ import BrideGroom from './components/BrideGroom';
 import LoveStory from './components/LoveStory';
 import WhenWhere from './components/WhenWhere';
 import Gallery from './components/Gallery';
+import Write from './components/Write';
 import './App.css';
 import axios from 'axios';
 import * as Def from './common/def.js';
@@ -90,6 +91,8 @@ class App extends React.Component {
         <Gallery
           gallery={this.state.invitation.resSyntheticInvitation.galleryVO}
         />
+        {/* sweetmessage 추후 개발 */}
+        <Write />
       </>
     ) : (
       <LoadingFail />
