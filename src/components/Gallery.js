@@ -32,7 +32,7 @@ function ItemGallery({ seq, gallery: { fullName } }) {
   ];
 
   return (
-    <div className='imgage__item'>
+    <div className='image__item'>
       <img
         className='item__image'
         src={fullName}
