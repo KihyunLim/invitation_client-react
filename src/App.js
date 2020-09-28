@@ -9,6 +9,7 @@ import LoveStory from './components/LoveStory';
 import WhenWhere from './components/WhenWhere';
 import Gallery from './components/Gallery';
 import Write from './components/Write';
+// import Modal from './components/Modal';
 import './App.css';
 import axios from 'axios';
 import * as Def from './common/def.js';
@@ -93,6 +94,7 @@ class App extends React.Component {
         />
         {/* sweetmessage 추후 개발 */}
         <Write />
+        {/* <Modal /> */}
       </>
     ) : (
       <LoadingFail />
