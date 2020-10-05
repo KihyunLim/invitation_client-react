@@ -32,3 +32,10 @@
   /* Annimation */
   --animation-duration: 300ms;
 }
+
+@media screen and (max-width: 768px) {
+  :root {
+    /* Font size */
+    --font-large: 2rem;
+  }
+}
