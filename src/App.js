@@ -93,7 +93,10 @@ class App extends React.Component {
           gallery={this.state.invitation.resSyntheticInvitation.galleryVO}
         />
         {/* sweetmessage 추후 개발 */}
-        <Write />
+        <Write
+          userId={this.state.invitation.resSyntheticInvitation.invitationVO.id}
+          invSeq={this.state.invitation.resSyntheticInvitation.invitationVO.seq}
+        />
         {/* <Modal /> */}
       </>
     ) : (
