@@ -22,9 +22,19 @@ class App extends React.Component {
   };
 
   getInvitationData = async () => {
+    const param = window.location.search;
+    if (param === '') {
+      alert('청첩장 주소를 확인해주세요.');
+      this.setState({
+        isLoading: false,
+        isLoadingSuccess: false,
+      });
+      return;
+    }
+
     await axios
       .get(
-        'http://localhost:8080/admin/invitation/receiveInvitation.do?invSeq=1'
+        'http://localhost:8080/admin/invitation/receiveInvitation.do' + param
       )
       .then((res) => {
         this.setState(() => {
@@ -50,7 +60,7 @@ class App extends React.Component {
             isLoadingSuccess: true,
             invitation: Def.replacementData,
           };
-          // return { isLoading: false, invitation: Def.replacementData };
+          // return { isLoading: false };
         });
       });
 
