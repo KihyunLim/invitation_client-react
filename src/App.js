@@ -8,6 +8,7 @@ import BrideGroom from './components/BrideGroom';
 import LoveStory from './components/LoveStory';
 import WhenWhere from './components/WhenWhere';
 import Gallery from './components/Gallery';
+import SweetMessage from './components/SweetMessage';
 import Write from './components/Write';
 // import Modal from './components/Modal';
 import './App.css';
@@ -34,7 +35,7 @@ class App extends React.Component {
 
     await axios
       .get(
-        'http://localhost:8080/admin/invitation/receiveInvitation.do' + param
+        'http://localhost:8980/admin/invitation/receiveInvitation.do' + param
       )
       .then((res) => {
         this.setState(() => {
@@ -102,7 +103,11 @@ class App extends React.Component {
         <Gallery
           gallery={this.state.invitation.resSyntheticInvitation.galleryVO}
         />
-        {/* sweetmessage 추후 개발 */}
+        <SweetMessage
+          sweetMessage={
+            this.state.invitation.resSyntheticInvitation.sweetMessageVO
+          }
+        />
         <Write
           userId={this.state.invitation.resSyntheticInvitation.invitationVO.id}
           invSeq={this.state.invitation.resSyntheticInvitation.invitationVO.seq}

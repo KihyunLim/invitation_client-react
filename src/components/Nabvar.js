@@ -76,7 +76,7 @@ function Navbar() {
         <li className="menu__item" data-link="#gallery">
           Gallery
         </li>
-        <li className="menu__item" data-link="#sweetMessageWrite">
+        <li className="menu__item" data-link="#sweetMessageList">
           Sweet Message
         </li>
       </ul>
