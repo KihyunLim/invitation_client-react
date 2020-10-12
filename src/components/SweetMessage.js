@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
+import axios from 'axios';
 
 function SweetMessage({ sweetMessage }) {
+  const filteredSweetMessage = sweetMessage.filter(
+    (item) => item.isDelete === false
+  );
+
   return (
     <section id="sweetMessageList">
       <h1 className="sweetMessageList__title">SweetMessage</h1>
       <div className="sweetMessageList__message">
-        {sweetMessage.map((itemSweetMessage) => (
+        {filteredSweetMessage.map((itemSweetMessage) => (
           <ItemSweetMessage
             key={itemSweetMessage.seq}
             message={itemSweetMessage}
@@ -17,6 +22,32 @@ function SweetMessage({ sweetMessage }) {
 }
 
 function ItemSweetMessage({ message }) {
+  const deleteSweetMessage = async () => {
+    const checkPassword = prompt('비밀번호를 입력해주세요.', '');
+
+    if (checkPassword === message.registerPassword) {
+      // const param = encodeURIComponent(`?seq=${message.seq}&isDelete=true`);
+      const param = `?seq=${message.seq}&isDelete=true`;
+      console.log(param);
+      await axios
+        .get(
+          'http://localhost:8980/admin/invitation/deleteSweetMessage.do' + param
+        )
+        .then((res) => {
+          // 일단 새로고침으로 하고 리덕스 배우면 그때 추가 수정하는 거로
+          console.log(res);
+          window.location.reload();
+        })
+        .catch((res) => {
+          console.log(res.message);
+        });
+    } else {
+      if ((checkPassword === null || checkPassword === '') === false) {
+        alert('비밀번호가 일치하지 않습니다.');
+      }
+    }
+  };
+
   useEffect(() => {
     const sweetMessageList_message = document.querySelector(
       '.sweetMessageList__message'
@@ -81,7 +112,9 @@ function ItemSweetMessage({ message }) {
       <div className="item__info">
         <h3 className="item__name">{message.registerName}</h3>
         <div className="item__wrap_delete">
-          <button className="wrap_delete__delete">삭제</button>
+          <button className="wrap_delete__delete" onClick={deleteSweetMessage}>
+            삭제
+          </button>
         </div>
       </div>
     </div>
